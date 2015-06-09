@@ -14,6 +14,7 @@ int cone_number = 0;
 
 int input_reader(FILE *f) {
   char buf[10], *tok = NULL;
+  int i = 0;
   fgets(buf,10,f);
   tok = strtok(buf," \n");
   if(!tok) {
@@ -41,6 +42,13 @@ int input_reader(FILE *f) {
     return 1;
   }
   cone_number = atoi(tok);
+  for(i=0;i<cone_number;i++) {
+    fgets(buf,10,f);
+    tok = strtok(buf," \n");
+    Cones[i].x = atoi(tok);
+    tok = strtok(NULL," \n");
+    Cones[i].y = atoi(tok);
+  }
   return 0;
 }
 
